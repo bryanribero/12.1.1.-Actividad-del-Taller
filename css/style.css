@@ -20,7 +20,7 @@
 }
 
 .stars-container {
-    display: flex; /* Para alinear las estrellas en fila */
+    display: flex; 
 }
 
 .title-container {
@@ -44,4 +44,40 @@ main {
 
 .offcanvas-top{
     height: fit-content;
+}
+
+.detalles-container {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    background-color: #4f545a;
+    color: white;
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.103); 
+    z-index: 1000; 
+    padding: 20px; 
+    max-width: 90%; 
+    overflow: auto; 
+}
+
+.detalles-container h2 {
+    margin: 0 0 30px; 
+    text-decoration: underline;
+}
+
+.detalles-container p {
+    margin: 5px 0; 
+}
+
+.overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); 
+    z-index: 999; 
+    display: none; 
 }

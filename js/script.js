@@ -49,7 +49,7 @@ fetch("https://japceibal.github.io/japflix_api/movies-data.json")
                     }
 
                     h5.textContent = pelicula.title;
-                    p.textContent = pelicula.tagline;
+                    p.textContent = pelicula.tagline || "Sin tagline disponible";
 
                     titleContainer.appendChild(h5);
                     titleContainer.appendChild(starsContainer);
@@ -58,6 +58,48 @@ fetch("https://japceibal.github.io/japflix_api/movies-data.json")
 
 
                     lista.appendChild(li);
+
+                    li.addEventListener("click", function(){
+                        const overlay = document.createElement("div");
+                            overlay.classList.add("overlay");
+                            document.body.appendChild(overlay);
+
+                        const detallesContainer = document.createElement("div");
+
+                        detallesContainer.classList.add("detalles-container");
+
+                        const title = document.createElement("h2");
+                        const overview = document.createElement("p");
+                        const hr = document.createElement("hr");
+                        const genres = document.createElement("p");
+
+                        title.classList.add("detalles-title");
+                        overview.classList.add("detalles-overview");
+                        hr.classList.add("detalles-hr");
+                        genres.classList.add("detalles-genres");
+
+                        title.textContent = pelicula.title;
+                        overview.textContent = pelicula.overview;
+
+                        const genresArray = pelicula.genres;
+                        const genreNames = genresArray.map(genre => genre.name); 
+                        genres.textContent = genreNames.join(", ");
+
+                        detallesContainer.appendChild(title);
+                        detallesContainer.appendChild(overview);
+                        detallesContainer.appendChild(hr);
+                        detallesContainer.appendChild(genres);
+
+                        document.body.appendChild(detallesContainer);
+
+                        overlay.style.display = "block";
+                        detallesContainer.style.display = "block";
+
+                        overlay.addEventListener("click", function() {
+                            document.body.removeChild(detallesContainer);
+                            document.body.removeChild(overlay);
+                        });
+                    });
                 });
         input.value = "";
             }
