@@ -11,9 +11,28 @@
 }
 
 .card-content{
-    height: 150px;
-    overflow: auto;
+    position: relative;
+    color: white;
+    padding: 10px;
+    border: 1px solid #000000;
+    overflow: hidden; 
+    cursor: pointer;
 }
+
+.stars-container {
+    display: flex; /* Para alinear las estrellas en fila */
+}
+
+.title-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.card-tagline {
+    color: #6a737d;
+}
+
 
 main {
     min-height: calc(100vh - 100px);
