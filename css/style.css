@@ -89,17 +89,9 @@ main {
 }
 
 .dropdown {
-    position: relative; /* Asegúrate de que el contenedor esté posicionado */
-    display: inline-block; /* Permitir que el botón se muestre en línea */
-    z-index: 1002; /* Asegurarte de que esté por encima del overlay */
+    position: relative;
+    display: inline-block;
+    z-index: 1002;
 }
 
-
-.dropdown-menu {
-    position: absolute; /* Mantenerlo absoluto */
-    top: 100%; /* Colocarlo justo debajo del botón */
-    left: 0; /* Alinear a la izquierda del botón */
-    z-index: 1003; /* Asegúrate de que esté sobre otros elementos */
-    margin-top: 0; /* Asegúrate de que no tenga margen superior */
-}
 
