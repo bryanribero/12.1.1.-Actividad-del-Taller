@@ -59,42 +59,83 @@ fetch("https://japceibal.github.io/japflix_api/movies-data.json")
 
                     lista.appendChild(li);
 
-                    li.addEventListener("click", function(){
+                    li.addEventListener("click", function() {
                         const overlay = document.createElement("div");
-                            overlay.classList.add("overlay");
-                            document.body.appendChild(overlay);
-
+                        overlay.classList.add("overlay");
+                        document.body.appendChild(overlay);
+                    
                         const detallesContainer = document.createElement("div");
-
                         detallesContainer.classList.add("detalles-container");
-
+                    
                         const title = document.createElement("h2");
                         const overview = document.createElement("p");
                         const hr = document.createElement("hr");
                         const genres = document.createElement("p");
-
+                        const genresMore = document.createElement("div");
+                        
                         title.classList.add("detalles-title");
                         overview.classList.add("detalles-overview");
                         hr.classList.add("detalles-hr");
                         genres.classList.add("detalles-genres");
-
+                        genresMore.classList.add("container-genresMore");
+                    
                         title.textContent = pelicula.title;
                         overview.textContent = pelicula.overview;
-
+                    
                         const genresArray = pelicula.genres;
                         const genreNames = genresArray.map(genre => genre.name); 
                         genres.textContent = genreNames.join(", ");
-
+                    
+                        const dropdownDiv = document.createElement("div");
+                        dropdownDiv.classList.add("dropdown");
+                    
+                        const dropdownLink = document.createElement("a");
+                        dropdownLink.classList.add("btn", "btn-secondary", "dropdown-toggle");
+                        dropdownLink.href = "#";
+                        dropdownLink.role = "button";
+                        dropdownLink.setAttribute("data-bs-toggle", "dropdown");
+                        dropdownLink.setAttribute("aria-expanded", "false");
+                        dropdownLink.textContent = "More";
+                    
+                        const dropdownMenu = document.createElement("ul");
+                        dropdownMenu.classList.add("dropdown-menu");
+                    
+                        const year = pelicula.release_date.split("-")[0];
+                    
+                        const option1 = document.createElement("li");
+                        option1.textContent = "Year: " + year; 
+                        dropdownMenu.appendChild(option1);
+                    
+                        const option2 = document.createElement("li");
+                        option2.textContent = "Runtime: " + pelicula.runtime; 
+                        dropdownMenu.appendChild(option2);
+                    
+                        const option3 = document.createElement("li");
+                        option3.textContent = "Budget: $" + pelicula.budget; 
+                        dropdownMenu.appendChild(option3);
+                    
+                        const option4 = document.createElement("li");
+                        option4.textContent = "Revenue: $" + pelicula.revenue; 
+                        dropdownMenu.appendChild(option4);
+                    
+                        dropdownDiv.appendChild(dropdownLink);
+                        dropdownDiv.appendChild(dropdownMenu);
+                    
+                        
+                        genresMore.classList.add("d-flex", "justify-content-between", "align-items-center");
+                        genresMore.appendChild(genres);
+                        genresMore.appendChild(dropdownDiv);
+                        
                         detallesContainer.appendChild(title);
                         detallesContainer.appendChild(overview);
                         detallesContainer.appendChild(hr);
-                        detallesContainer.appendChild(genres);
-
+                        detallesContainer.appendChild(genresMore);
+                    
                         document.body.appendChild(detallesContainer);
-
+                    
                         overlay.style.display = "block";
                         detallesContainer.style.display = "block";
-
+                    
                         overlay.addEventListener("click", function() {
                             document.body.removeChild(detallesContainer);
                             document.body.removeChild(overlay);
