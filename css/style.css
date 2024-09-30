@@ -88,7 +88,7 @@ main {
 }
 
 .dropdown {
-    position: static;  /* Cambiamos a static para que no interfiera con el posicionamiento absoluto del menú */
+    position: static;  
 }
 
 .dropdown-menu {
