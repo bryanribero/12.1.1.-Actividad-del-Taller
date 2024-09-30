@@ -10,86 +10,107 @@
     background-color: beige;
 }
 
-.card-content{
+.card-content {
     position: relative;
     color: white;
     padding: 10px;
     border: 1px solid #000000;
-    overflow: hidden; 
+    overflow: hidden;
     cursor: pointer;
 }
 
 .stars-container {
-    display: flex; 
+    display: flex;
 }
 
 .title-container {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-tagline {
     color: #6a737d;
 }
 
-
 main {
     min-height: calc(100vh - 100px);
-  }
+}
 
-.checked{
+.checked {
     color: orange;
 }
 
-.offcanvas-top{
+.offcanvas-top {
     height: fit-content;
 }
 
 .detalles-container {
-    position: fixed; 
-    top: 50%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: #4f545a;
     color: white;
     border: 1px solid rgb(0, 0, 0);
-    border-radius: 8px; 
-    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.103); 
-    z-index: 1000; 
-    padding: 20px; 
-    max-width: 90%; 
-    overflow: auto; 
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.103);
+    z-index: 1000;
+    padding: 20px;
+    max-width: 90%;
+    overflow: auto;
 }
 
 .detalles-container h2 {
-    margin: 0 0 30px; 
+    margin: 0 0 30px;
     text-decoration: underline;
 }
 
 .detalles-container p {
-    margin: 5px 0; 
+    margin: 5px 0;
 }
 
 .overlay {
-    position: fixed; 
-    top: 0; 
+    position: fixed;
+    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5); 
-    z-index: 999; 
-    display: none; 
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none; /* Asegúrate de manejar su visibilidad con JavaScript */
 }
 
 .container-genresMore {
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .dropdown {
-    position: relative;
-    display: inline-block;
-    z-index: 1002;
+    position: static;  /* Cambiamos a static para que no interfiera con el posicionamiento absoluto del menú */
+}
+
+.dropdown-menu {
+    position: fixed;
+    z-index: 1100;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+.dropdown-menu.show {
+    display: block !important;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    min-width: 150px;
+}
+
+.dropdown-menu li {
+    padding: 5px 10px;  /* Añadimos padding a los elementos de la lista */
+    white-space: nowrap;  /* Evitamos que el texto se rompa en múltiples líneas */
 }
